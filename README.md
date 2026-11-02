@@ -4,6 +4,8 @@
 
 Milo combines readable, Python-inspired syntax with a **C++17 bytecode virtual machine**. Write one instruction per line, close blocks with `end`, and learn with variables, decisions, loops, lists, dictionaries, and functions.
 
+<img width="1774" height="887" alt="Milo Programming Language Banner" src="https://github.com/user-attachments/assets/7a0f180a-f06c-447d-914e-26aa2f2bbf82" />
+
 Standalone version **0.3.0**. [MIT licensed](LICENSE).
 
 ```milo
