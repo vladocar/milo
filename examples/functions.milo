@@ -1,0 +1,12 @@
+function greet(name)
+    say "Welcome", name
+end
+
+function square(number)
+    return number * number
+end
+
+greet("Alex")
+for n in numbers(1, 5)
+    say n, "squared is", square(n)
+end

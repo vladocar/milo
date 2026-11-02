@@ -1,0 +1,9 @@
+name = ask("What is your name? ")
+age = number(ask("How old are you? "))
+say "Hello", name
+
+if age >= 18
+    say "You are an adult."
+else
+    say "You are under 18."
+end

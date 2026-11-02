@@ -1,0 +1,7 @@
+# Your first Milo program
+name = "Alex"
+say "Hello", name
+
+repeat 3 as count
+    say "Learning Milo — step", count
+end

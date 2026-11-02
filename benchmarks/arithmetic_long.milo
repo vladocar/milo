@@ -1,0 +1,5 @@
+total = 0
+for n in numbers(1, 1500000)
+    total = total + n * 3 - 1
+end
+say total

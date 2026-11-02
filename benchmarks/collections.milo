@@ -1,0 +1,8 @@
+items = [10, 20, 30, 40, 50]
+total = 0
+repeat 30000
+    for item in items
+        total = total + item
+    end
+end
+say total

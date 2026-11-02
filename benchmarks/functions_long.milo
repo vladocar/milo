@@ -1,0 +1,9 @@
+function square(n)
+    return n * n
+end
+
+total = 0
+for n in numbers(1, 500000)
+    total = total + square(n)
+end
+say total

@@ -1,0 +1,13 @@
+items = ["Bread", "Milk", "Apples"]
+append(items, "Coffee")
+say "Shopping list:"
+for item in items
+    say "•", item
+end
+
+prices = {"Bread": 40, "Milk": 70, "Apples": 60, "Coffee": 150}
+total = 0
+for item in items
+    total = total + prices[item]
+end
+say "Total:", total, "denars"

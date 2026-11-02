@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milo Playground · Small steps. Big ideas.</title>
+<meta name="description" content="Learn to code with Milo. Draw pictures, ask questions, and build little games with fourteen guided lessons.">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#1f604b">
+<meta property="og:title" content="Milo Playground"><meta property="og:description" content="Small steps. Big ideas. A creative coding playground for kids and beginners."><meta property="og:image" content="./assets/social.svg">
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg"><link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<a href="#editor" class="skip">Skip to the code editor</a>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Milo Playground home"><img src="./assets/favicon.svg" alt="" width="40" height="40"><span>milo<span class="brand-label">PLAYGROUND</span></span></a>
+  <nav class="mode-nav" aria-label="Workspace mode"><button id="learnMode" class="selected" aria-current="page">Learning trail</button><button id="freeMode">Free play <span aria-hidden="true">↗</span></button><button id="galleryButton" aria-haspopup="dialog">My projects <span id="projectCount" class="project-count">0</span></button></nav>
+  <div class="header-actions"><button id="saveProject" class="save-project-button">Save project</button><button id="helpButton" class="quiet"><span class="question-mark" aria-hidden="true">?</span> Help & commands</button><button id="downloadCode" class="quiet icon-button" aria-label="Download your Milo program" title="Download your program"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4"/></svg></button></div>
+</header>
+<main>
+  <section class="welcome" aria-label="Welcome"><div><p class="eyebrow">A LITTLE CURIOSITY GOES A LONG WAY</p><h1>Small steps. Big ideas.</h1><p>Write a little code. Watch it come to life.</p></div><div class="welcome-note"><span class="leaf" aria-hidden="true">✦</span><span>A space to try things.<br>And see what happens.</span></div></section>
+  <div class="workspace">
+    <aside class="trail" aria-label="Lessons">
+      <div class="trail-heading"><div><p class="eyebrow">YOUR LEARNING TRAIL</p><h2>One idea at a time</h2></div><span id="progressCount" class="progress-count">0 / 14</span></div>
+      <div class="progress-track" aria-hidden="true"><div id="progressFill"></div></div>
+      <nav id="lessonList" aria-label="Choose a lesson"></nav>
+      <div class="trail-bottom"><span class="sprout" aria-hidden="true">✳</span><p>You don’t have to get it right<br>the first time.</p><button id="startFirst" class="text-button">Start from the beginning <span aria-hidden="true">→</span></button></div>
+    </aside>
+    <section class="coding-column" aria-label="Code and challenge">
+      <div class="lesson-intro"><p id="lessonTag" class="eyebrow"></p><h2 id="lessonTitle"></h2><p id="lessonIntro"></p></div>
+      <section class="editor-card" aria-label="Program editor">
+        <div class="panel-header"><span class="filename"><span class="file-dot" aria-hidden="true"></span><span id="filename">first_square.milo</span></span><span id="saveState" class="muted small">Saved on this device</span><button id="resetCode" class="subtle-button" title="Restore this lesson’s starter code">Reset</button></div>
+        <div class="editor-wrap" id="editorWrap">
+          <div id="executionLine" class="execution-line" hidden></div><div id="errorLine" class="error-line" hidden></div>
+          <div class="line-gutter" id="lineGutter" aria-hidden="true"></div>
+          <pre id="highlight" aria-hidden="true"></pre>
+          <textarea id="editor" aria-label="Milo code editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off"></textarea>
+        </div>
+        <div class="editor-toolbar"><div class="run-controls"><button id="runButton" class="primary-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg><span>Run code</span></button><button id="stepButton" class="secondary-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 10 7-10 7ZM19 5v14"/></svg><span>Step</span></button><button id="stopButton" class="stop-button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg><span>Stop</span></button></div><span class="keyboard-hint">Ctrl / ⌘ + Enter</span></div>
+      </section>
+      <section class="challenge-card"><div class="challenge-icon" aria-hidden="true">✦</div><div><h3 id="challengeHeading">Your little challenge</h3><p id="challengeText"></p><button id="hintButton" class="text-button">A little hint <span aria-hidden="true">↗</span></button><p id="hintText" class="hint" hidden></p><div id="challengeResult" hidden></div></div></section>
+      <section class="variables-card"><div class="variables-heading"><h3>What your program remembers</h3><span id="variableCount" class="muted small">Variables</span></div><div id="variableList"><p class="empty-variables">Variables will appear here as your code runs.</p></div></section>
+    </section>
+    <section class="results-column" aria-label="Drawing and messages">
+      <div class="results-toolbar"><button id="swapPanels" class="panel-swap-button" aria-label="Swap canvas and messages" title="Show Messages above Your canvas"><span aria-hidden="true">↕</span> Swap panels</button></div>
+      <section class="canvas-card"><div id="scorePanel" class="score-panel" role="status" aria-live="polite" hidden><span>Score</span><strong id="scoreValue">0</strong></div><div class="panel-header"><h2><span class="panel-icon" aria-hidden="true">◇</span> Your canvas</h2><div class="canvas-actions"><button id="soundButton" class="subtle-button" aria-pressed="true">Sound on</button><label class="grid-label"><input type="checkbox" id="gridToggle" checked> Grid</label><button id="downloadPicture" class="subtle-button" title="Save the current drawing as a PNG">Save picture</button></div></div>
+        <div class="canvas-stage"><canvas id="drawingCanvas" width="1000" height="1000" aria-label="Your drawing canvas"></canvas><svg id="turtleLayer" viewBox="0 0 500 500" aria-hidden="true"><g id="turtle" transform="translate(250 250)"><path d="M0 -14 11 10 0 5 -11 10Z" fill="#1f604b" stroke="white" stroke-width="2" stroke-linejoin="round"/><circle cx="0" cy="1" r="2" fill="#f3cb5b"/></g></svg><div id="canvasWelcome" class="canvas-welcome"><span>Your turtle starts here</span><span class="canvas-arrow" aria-hidden="true">↖</span></div></div>
+        <div class="canvas-footer"><span id="turtlePosition">x 0 &nbsp; y 0</span><label>Drawing pace <select id="speedSelect" aria-label="Drawing pace"><option value="0">Quick</option><option value="25" selected>Steady</option><option value="140">Gentle</option></select></label></div>
+        <p id="soundNotice" class="sound-notice" role="status" hidden></p>
+        <p id="spriteStatus" class="sprite-status" role="status" hidden></p>
+      </section>
+      <section id="keyControls" class="key-controls" tabindex="0" role="group" aria-labelledby="keyTitle" aria-describedby="keyHint" hidden>
+        <div><p class="eyebrow">YOUR TURN</p><h3 id="keyTitle">Give Milo a direction</h3><p id="keyHint">Press an arrow or Space, or tap a button below.</p></div>
+        <div class="direction-pad"><button data-key="up" aria-label="Send up arrow">↑</button><button data-key="left" aria-label="Send left arrow">←</button><button data-key="down" aria-label="Send down arrow">↓</button><button data-key="right" aria-label="Send right arrow">→</button><button data-key="space" class="space-key" aria-label="Send space">Space</button></div>
+      </section>
+      <section class="messages-card" aria-label="Program messages"><div class="panel-header"><h2><span class="panel-icon" aria-hidden="true">≋</span> Messages</h2><span id="runtimeStatus" class="status"><span></span> Ready to explore</span></div><div id="messages" class="messages" role="log" aria-label="Program output"><p class="empty-messages">A hello, an answer, a new idea.<br>Your program’s words appear here.</p></div><form id="answerForm" hidden><label id="answerLabel" for="answerInput"></label><div><input id="answerInput" maxlength="500" autocomplete="off" placeholder="Type your answer…"><button class="primary-button" type="submit">Send answer <span aria-hidden="true">→</span></button></div></form></section>
+      <p class="workspace-note"><span aria-hidden="true">✧</span> Every great idea starts with “what if?”</p>
+    </section>
+  </div>
+</main>
+<footer><span>Made for curious minds. Powered by Milo.</span><div><button id="importButton">Open a program</button><button id="privacyButton">Privacy</button><button id="termsButton">About this playground</button></div></footer>
+<input type="file" id="importFile" accept=".milo,.txt" hidden>
+<dialog id="helpDialog"><div class="dialog-heading"><div><p class="eyebrow">A LITTLE HELP ALONG THE WAY</p><h2>Your Milo field guide</h2></div><button class="dialog-close" aria-label="Close help">×</button></div><p class="dialog-description">One instruction per line. Close every block with <code>end</code>. Spaces make code easier to read.</p><div class="help-tabs"><button id="commandsTab" class="selected">Commands</button><button id="examplesTab">Try an example</button></div><div id="commandList"></div><div id="exampleList" hidden></div><div class="dialog-footer">Use Tab for four spaces. Shift + Tab leaves the editor. Ctrl / ⌘ + Enter runs your code. Press Escape to close this guide.</div></dialog>
+<dialog id="galleryDialog" class="gallery-dialog" aria-labelledby="galleryTitle">
+<div class="dialog-heading"><div><p class="eyebrow">A HOME FOR YOUR IDEAS</p><h2 id="galleryTitle">My little creations</h2></div><button class="dialog-close" aria-label="Close projects">×</button></div>
+<p class="dialog-description">Keep your experiments, pictures, and little games together. Projects stay in this browser.</p>
+<div class="gallery-toolbar"><div class="help-tabs"><button id="activeProjectsTab" class="selected">My projects</button><button id="starterProjectsTab">Starter projects</button><button id="projectBinTab">Project bin</button></div><button id="newProject" class="primary-button">New project <span aria-hidden="true">＋</span></button></div>
+<div id="starterIntro" class="starter-intro"><div><strong>A little inspiration?</strong><p>Explore 24 ready-to-remix projects, from pictures to little games.</p></div><button id="browseStarters" class="secondary-button">Browse starter projects →</button></div>
+<div id="galleryError" class="form-error" role="alert" hidden></div><div id="projectGrid" class="project-grid"></div>
+<p id="galleryFootnote" class="dialog-footer">A thumbnail shows the last drawing you saved. Open a project and run its code to draw it again. Download important programs to keep a separate copy.</p>
+</dialog>
+<dialog id="projectDialog" class="project-dialog" aria-labelledby="projectDialogTitle"><div class="dialog-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h2 id="projectDialogTitle">Save your project</h2></div><button class="dialog-close" aria-label="Close project form">×</button></div>
+<form id="projectForm"><label for="projectName">Project name</label><input id="projectName" maxlength="60" placeholder="My colorful garden" autocomplete="off" required><p id="projectSaveHint" class="dialog-description">Run your drawing first to add a preview.</p><p id="projectFormError" class="form-error" role="alert" hidden></p><div class="project-form-actions"><button id="projectSubmit" type="submit" class="primary-button">Save project</button><button id="saveCopy" type="button" class="secondary-button">Save a copy</button><button id="cancelProject" type="button" class="subtle-button">Keep editing</button></div></form></dialog>
+<dialog id="infoDialog"><div class="dialog-heading"><h2 id="infoTitle"></h2><button class="dialog-close" aria-label="Close information">×</button></div><div id="infoContent"></div></dialog>
+<div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+<div id="toast" role="status" hidden></div>
+<script type="module" src="./app.js"></script>
+</body></html>
